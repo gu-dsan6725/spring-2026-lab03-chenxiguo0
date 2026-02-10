@@ -1,45 +1,34 @@
-# California Housing ML Project
+# Wine Classification Project Guidelines
 
-## Project Overview
-This project performs exploratory data analysis and builds an XGBoost regression model on the California Housing dataset from scikit-learn. The goal is to predict median house values.
+## Project Objective
+The primary objective of this project is to build a robust machine learning pipeline for classifying wines into three distinct classes using the UCI Wine dataset. The pipeline should demonstrate best practices in data analysis, feature engineering, model training, and evaluation.
 
 ## Coding Standards
+- Adhere to PEP 8 for Python code style.
+- Use clear, descriptive variable and function names.
+- Include comprehensive comments for complex logic.
+- Ensure all functions have docstrings explaining their purpose, arguments, and return values.
 
-### Language and Tools
-- Use Python 3.11+
-- Use `uv` for package management (never pip)
-- Use `polars` for data manipulation (not pandas)
-- Use `ruff` for linting and formatting
-- Use `pytest` for testing
+## Dataset Specific Instructions (UCI Wine Dataset)
+- **Classes**: The dataset contains 3 distinct wine classes. The model should accurately predict these three classes.
+- **Classification Metrics**: Focus on classification-specific metrics for model evaluation, such as accuracy, precision, recall, F1-score, and a confusion matrix.
+- **Stratified Splits**: When splitting data into training and testing sets, ensure stratified sampling to maintain the original class distribution in both subsets.
+- **Data Loading**: Use `sklearn.datasets.load_wine()` to load the dataset.
 
-### Code Style
-- Use type annotations for all function parameters (one parameter per line)
-- All private functions must start with underscore (`_`) and be placed at the top of the file
-- Public functions follow after private functions
-- Functions should be no more than 30-50 lines
-- Two blank lines between function definitions
-- Use multi-line imports
-
-### Logging
-Always use this logging configuration:
-```python
-import logging
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s,p%(process)s,{%(filename)s:%(lineno)d},%(levelname)s,%(message)s",
-)
-```
-
-### Constants
-- Do not hard-code constants inside functions
-- Declare constants at the top of the file with type annotations
-
-### After Writing Python Files
-- Always run `uv run ruff check --fix <filename>` after writing Python files
-- Always run `uv run python -m py_compile <filename>` to verify syntax
-
-### Output
-- Save plots to the `output/` directory
-- Use `logging.info()` for progress messages
-- Pretty-print dictionaries in log messages using `json.dumps(data, indent=2, default=str)`
+## ML Pipeline Components
+1.  **Exploratory Data Analysis (EDA)**:
+    - Utilize `polars` for efficient data manipulation and analysis.
+    - Visualize data distributions, correlations, and relationships using `matplotlib`.
+    - Identify potential outliers, missing values, and data inconsistencies.
+2.  **Feature Engineering and Data Preparation**:
+    - Handle any missing values appropriately (if any).
+    - Scale numerical features as necessary for the XGBoost model.
+    - Prepare data in a format suitable for model training.
+3.  **XGBoost Classification Model Training**:
+    - Implement an XGBoost classifier.
+    - Employ cross-validation for robust model training and hyperparameter tuning.
+    - Document the chosen hyperparameters and their rationale.
+4.  **Model Evaluation and Reporting**:
+    - Generate a comprehensive performance report including all relevant classification metrics.
+    - Visualize the confusion matrix.
+    - Discuss model strengths and weaknesses.
